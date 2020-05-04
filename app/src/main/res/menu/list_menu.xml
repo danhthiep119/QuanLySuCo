@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/error"
+            android:icon="@drawable/ic_announcement_black_24dp"
+            android:title="Báo cáo sự cố" />
+        <item
+            android:id="@+id/list_error"
+            android:icon="@drawable/ic_send_black_24dp"
+            android:title="Danh sách sự cố" />
+        <item
+            android:id="@+id/profile"
+            android:icon="@drawable/ic_person_black_24dp"
+            android:title="Hồ sơ" />
+        <item
+            android:id="@+id/setting"
+            android:icon="@drawable/ic_settings_black_24dp"
+            android:title="Cài đặt" />
+        <item
+            android:id="@+id/logout"
+            android:icon="@drawable/ic_open_in_browser_black_24dp"
+            android:title="Đăng xuất" />
+    </group>
+</menu>
