@@ -2,4 +2,61 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph"/>
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/navHost">
+    <activity
+        android:id="@+id/navHost"
+        android:name="View.NavHost"
+        android:label="NavHost"
+        tools:layout="@layout/nav_host">
+        <action
+            android:id="@+id/action_navHost_to_menu_nav"
+            app:destination="@id/menu_nav" />
+    </activity>
+    <activity
+        android:id="@+id/loginScreen"
+        android:name="View.LoginScreen"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
+    <activity
+        android:id="@+id/registerScreen2"
+        android:name="View.RegisterScreen"
+        android:label="RegisterScreen"
+        tools:layout="@layout/register_view"/>
+    <activity
+        android:id="@+id/menu_nav"
+        android:name="View.RegisterScreen"
+        android:label="RegisterScreen"
+        tools:layout="@layout/menu_nav">
+        <action
+            android:id="@+id/action_menu_nav_to_editProfile"
+            app:destination="@id/editProfile" />
+        <action
+            android:id="@+id/action_menu_nav_to_listIssue"
+            app:destination="@id/listIssue" />
+        <action
+            android:id="@+id/action_menu_nav_to_detail"
+            app:destination="@id/detail" />
+    </activity>
+    <activity
+        android:id="@+id/detail"
+        android:name="View.RegisterScreen"
+        android:label="RegisterScreen"
+        tools:layout="@layout/detail_issue"/>
+
+    <activity
+        android:id="@+id/listIssue"
+        android:name="View.RegisterScreen"
+        android:label="RegisterScreen"
+        tools:layout="@layout/list_issue">
+        <action
+            android:id="@+id/action_listIssue_to_detail"
+            app:destination="@id/detail" />
+    </activity>
+
+    <activity
+        android:id="@+id/editProfile"
+        android:name="View.RegisterScreen"
+        android:label="RegisterScreen"
+        tools:layout="@layout/edit_profile"/>
+</navigation>
