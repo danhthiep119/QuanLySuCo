@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.quanlysucotruncu.R;
 
 public class RegisterScreen extends AppCompatActivity {
-    Button btnLogin;
+    Button btnLogin,btnRegister;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,8 +20,15 @@ public class RegisterScreen extends AppCompatActivity {
         AddEvents();
     }
 
+
     private void AddEvents() {
         btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
@@ -31,5 +38,6 @@ public class RegisterScreen extends AppCompatActivity {
 
     private void AddControls() {
         btnLogin=findViewById(R.id.btnLogin);
+        btnRegister=findViewById(R.id.btnRegister);
     }
 }
