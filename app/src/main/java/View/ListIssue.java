@@ -4,13 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.example.quanlysucotruncu.R;
+import com.example.issue.R;
 
 public class ListIssue extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.nav_host);
+        setContentView(R.layout.list_issue);
     }
 }

@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="View.ListIssue">
+    android:layout_height="match_parent">
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="0dp"
@@ -22,7 +21,6 @@
             android:layout_weight="1"
             android:background="@drawable/edit_button_nav"
             />
-
         <TextView
             android:id="@+id/txtTitle"
             android:layout_width="wrap_content"
