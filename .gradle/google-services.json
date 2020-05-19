@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "426804741220",
+    "firebase_url": "https://listissue.firebaseio.com",
+    "project_id": "listissue",
+    "storage_bucket": "listissue.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:426804741220:android:6b5aa54e63922844278b71",
+        "android_client_info": {
+          "package_name": "com.example.quanlysucotruncu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "426804741220-map2sq0lne1p4cdapnvsbse8sl0pjuma.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZXabs0WMY90LTdioyMqSK0EyW1r5uAUE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "426804741220-map2sq0lne1p4cdapnvsbse8sl0pjuma.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
