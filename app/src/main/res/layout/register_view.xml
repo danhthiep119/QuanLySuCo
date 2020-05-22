@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context="view.RegisterScreen">
 
     <ImageView
         android:id="@+id/imageView"
@@ -34,7 +35,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/txtName"
+            android:id="@+id/txtInputName"
             android:drawableLeft="@drawable/ic_person_black_24dp"
             android:hint="Họ và tên"
             android:textAlignment="center"
@@ -58,7 +59,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/txtrePhone"
+            android:id="@+id/txtInputPhone"
             android:drawableLeft="@drawable/ic_phone_android_black_24dp"
             android:hint="Số điện thoại"
             android:textAlignment="center"
@@ -82,7 +83,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/txtrePassword"
+            android:id="@+id/txtInputPassword"
             android:drawableLeft="@drawable/ic_vpn_key_black_24dp"
             android:hint="Mật khẩu"
             android:textAlignment="center"
@@ -106,7 +107,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/txtRepass"
+            android:id="@+id/txtInputRepass"
             android:drawableLeft="@drawable/ic_vpn_key_black_24dp"
             android:hint="Nhập lại mật khẩu"
             android:textAlignment="center"
