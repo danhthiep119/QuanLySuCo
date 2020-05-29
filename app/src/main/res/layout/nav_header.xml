@@ -5,10 +5,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="150dp"
-    android:background="@color/colorYellow">
+    android:background="@color/colorYellow"
+    tools:context="view.Main">
 
     <ImageView
-        android:id="@+id/imgUser"
+        android:id="@+id/imgProfileUser"
         android:layout_width="125dp"
         android:layout_height="0dp"
         android:layout_marginStart="10dp"
@@ -20,7 +21,7 @@
         app:srcCompat="@drawable/ic_launcher_foreground" />
 
     <TextView
-        android:id="@+id/txtUser"
+        android:id="@+id/txtProfileUser"
         android:layout_width="0dp"
         android:layout_height="65dp"
         android:layout_marginStart="10dp"
@@ -28,19 +29,19 @@
         android:text="TextView"
         android:textSize="30dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imgUser"
-        app:layout_constraintTop_toTopOf="@+id/imgUser"
+        app:layout_constraintStart_toEndOf="@+id/imgProfileUser"
+        app:layout_constraintTop_toTopOf="@+id/imgProfileUser"
         />
 
     <TextView
-        android:id="@+id/txtPhone"
+        android:id="@+id/txtProfilePhone"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="5dp"
         android:text="TextView"
         android:textSize="24dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imgUser"
-        app:layout_constraintEnd_toEndOf="@+id/txtUser"
-        app:layout_constraintStart_toStartOf="@+id/txtUser"
-        app:layout_constraintTop_toBottomOf="@+id/txtUser" />
+        app:layout_constraintBottom_toBottomOf="@+id/imgProfileUser"
+        app:layout_constraintEnd_toEndOf="@+id/txtProfileUser"
+        app:layout_constraintStart_toStartOf="@+id/txtProfileUser"
+        app:layout_constraintTop_toBottomOf="@+id/txtProfileUser" />
 </androidx.constraintlayout.widget.ConstraintLayout>

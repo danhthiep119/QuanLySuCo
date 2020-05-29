@@ -1,10 +1,16 @@
 package view;
 
+import android.Manifest;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,12 +40,15 @@ import viewmodel.IssueAdapter;
 
 public class Main extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     ImageButton btnMenu,btnSearch,btnMore;
+    TextView txtProfileName,txtProfilePhone;
+    ImageView imgProfileUser;
     RecyclerView recyclerView;
     List<Issue> issueList=new ArrayList<>();
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
     String name, phone, image, key;
+    MyCustomExitDialog myCustomExitDialog;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,16 +60,26 @@ public class Main extends AppCompatActivity implements NavigationView.OnNavigati
         AddEvents();
     }
 
+
     private void getDataFromIntent() {
         try {
             name=getIntent().getExtras().getString("NAME");
             phone=getIntent().getExtras().getString("PHONE");
             key=getIntent().getExtras().getString("KEY");
             image=getIntent().getExtras().getString("IMAGE");
+            txtProfileName.setText(name);
+            txtProfilePhone.setText(phone);
+            displayUserProfile(image);
         }
         catch (Exception e){
 
         }
+    }
+
+    private void displayUserProfile(String image){
+        byte[] decode = Base64.decode(image,Base64.DEFAULT);
+        Bitmap bimap = BitmapFactory.decodeByteArray(decode,0,decode.length);
+        imgProfileUser.setImageBitmap(bimap);
     }
 
     private void NavigationDrawer() {
@@ -77,9 +96,15 @@ public class Main extends AppCompatActivity implements NavigationView.OnNavigati
         if(drawerLayout.isDrawerOpen(GravityCompat.START)){
             drawerLayout.closeDrawer(GravityCompat.START);
         }
-        else finish();
+        else {
+            showDialog();
+        }
     }
 
+    private void showDialog(){
+        myCustomExitDialog = new MyCustomExitDialog(Main.this);
+        myCustomExitDialog.show();
+    }
 
     private void readDataFromFireBase() {
 
@@ -117,15 +142,25 @@ public class Main extends AppCompatActivity implements NavigationView.OnNavigati
         recyclerView=findViewById(R.id.recycleView);
         navigationView=findViewById(R.id.nav_view);
         toolbar=findViewById(R.id.toolbar);
+        txtProfileName=findViewById(R.id.txtProfileUser);
+        txtProfilePhone=findViewById(R.id.txtProfilePhone);
+        imgProfileUser=findViewById(R.id.imgProfileUser);
     }
+
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.error:
+                if(drawerLayout.isDrawerOpen(GravityCompat.START)){
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                }
                 startActivity(new Intent(Main.this,DetailIssue.class));
                 break;
             case R.id.list_error:
+                if(drawerLayout.isDrawerOpen(GravityCompat.START)){
+                    drawerLayout.closeDrawer(GravityCompat.START);
+                }
                 break;
             case R.id.profile:
                 Intent intent = new Intent(this,EditProfile.class);
@@ -138,7 +173,7 @@ public class Main extends AppCompatActivity implements NavigationView.OnNavigati
             case R.id.setting:
                 break;
             case R.id.logout:
-                finish();
+                showDialog();
                 break;
         }
         return true;

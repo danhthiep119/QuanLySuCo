@@ -1,6 +1,8 @@
 package view;
 
+import android.Manifest;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -32,22 +34,31 @@ public class LoginScreen extends AppCompatActivity {
     Button btnRegister,btnLogin;
     TextInputEditText txtPhone,txtPass;
     TextInputLayout viewPhone,viewPass;
-    List<User> listUser=new ArrayList<>();
-    public String phone,password;
+    Map<String,User> map = new HashMap<String,User>();
+    final int CAMERA_RESULT=101;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        requestPermissions();
         AddControls();
         AddEvents();
     }
-    public void ReadDataFromFireBase(){
+
+    private void requestPermissions() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if(shouldShowRequestPermissionRationale(Manifest.permission.CAMERA)){
+
+            }
+            requestPermissions(new String[]{Manifest.permission.CAMERA},CAMERA_RESULT);
+        }
+    }
+    public void ReadDataFromFireBase(final String phone, final String password){
         final FirebaseDatabase database=FirebaseDatabase.getInstance();
         DatabaseReference myRef=database.getReference("users/username");
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Map<String,User> map = new HashMap<String,User>();
                 for(DataSnapshot  data :dataSnapshot.getChildren()){
                     String key = data.getKey();
                     User user = data.getValue(User.class);
@@ -58,6 +69,8 @@ public class LoginScreen extends AppCompatActivity {
                 for(String keyNode:key){
                         if(phone.equals(map.get(keyNode).getPhone())){
                             if(password.equals(map.get(keyNode).getPassword())){
+                                txtPhone.setText("");
+                                txtPass.setText("");
                                 Toast.makeText(LoginScreen.this,"Đăng Nhập Thành Công! Chào mừng:"+map.get(keyNode).getName(),Toast.LENGTH_SHORT).show();
                                 Intent intent=new Intent(LoginScreen.this,Main.class);
                                 intent.putExtra("NAME",map.get(keyNode).getName());
@@ -78,7 +91,6 @@ public class LoginScreen extends AppCompatActivity {
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
             }
         });
     }
@@ -87,21 +99,21 @@ public class LoginScreen extends AppCompatActivity {
             if (txtPhone.getText().toString().isEmpty()) {
                 viewPhone.setErrorEnabled(true);
                 viewPhone.setError("Bạn Chưa nhập sđt");
-                txtPass.setError("Bạn Chưa nhập sđt");
+                txtPhone.setError("Bạn Chưa nhập sđt");
                 viewPhone.requestFocus();
             } else if (txtPass.getText().toString().isEmpty()) {
                 viewPhone.setErrorEnabled(false);
                 viewPass.setErrorEnabled(true);
                 viewPass.setError("Bạn chưa nhập mật khẩu");
-                txtPhone.setError("Bạn chưa nhập mật khẩu");
+                txtPass.setError("Bạn chưa nhập mật khẩu");
                 viewPass.requestFocus();
             }
             else if(!txtPhone.getText().toString().isEmpty() &&
                     !txtPass.getText().toString().isEmpty())
             {
-                phone = txtPhone.getText().toString();
-                password = txtPass.getText().toString();
-                ReadDataFromFireBase();
+                String phone = txtPhone.getText().toString();
+                String password = txtPass.getText().toString();
+                ReadDataFromFireBase(phone,password);
             }
 
     }

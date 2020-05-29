@@ -2,6 +2,7 @@ package viewmodel;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,10 +19,12 @@ import java.util.List;
 
 import model.Issue;
 import view.DetailIssue;
+import view.InfoIssue;
 
 public class IssueAdapter extends RecyclerView.Adapter<IssueAdapter.DataViewHolder>{
     private List<Issue> issue;
     private Context context;
+    final String TAG="Issue Adapter";
     public IssueAdapter(List<Issue> issue, Context context) {
         this.issue = issue;
         this.context = context;
@@ -53,7 +56,7 @@ public class IssueAdapter extends RecyclerView.Adapter<IssueAdapter.DataViewHold
                 String VIEW_DESCRIPTION= issue.get(position).getDescription();
                 String VIEW_ADDRESS= issue.get(position).getAddress();
                 int VIEW_STATUS= issue.get(position).getStatus();
-                Intent intent = new Intent(context, DetailIssue.class);
+                Intent intent = new Intent(context, InfoIssue.class);
                 intent.putExtra("TITLE",VIEW_TITLE);
                 intent.putExtra("DESCRIPTION",VIEW_DESCRIPTION);
                 intent.putExtra("ADDRESS",VIEW_ADDRESS);

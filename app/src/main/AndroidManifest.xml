@@ -24,6 +24,7 @@
         <activity android:name="view.ListIssue" />
         <activity android:name="view.DetailIssue"/>
         <activity android:name="view.EditProfile"/>
+        <activity android:name="view.InfoIssue"/>
     </application>
 
 </manifest>

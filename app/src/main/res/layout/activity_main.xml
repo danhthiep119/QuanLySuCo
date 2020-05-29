@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="view.LoginScreen"
+    android:background="@color/colorYellowLight"
     >
 
 
@@ -26,9 +27,11 @@
         android:id="@+id/view_phone"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="75dp"
         android:layout_marginStart="50dp"
         android:layout_marginEnd="50dp"
+        android:textColorHint="#FFFFFF"
+        app:boxStrokeColor="#FFFFFF"
         app:errorEnabled="false"
         app:errorTextColor="@color/colorRed"
         app:layout_constraintTop_toBottomOf="@id/img"
@@ -40,7 +43,7 @@
             android:layout_height="match_parent"
             android:id="@+id/txtPhone"
             android:drawableLeft="@drawable/ic_phone_android_black_24dp"
-            android:hint="Nhập số điện thoại"
+            android:hint="Số điện thoại"
             android:textAlignment="center"
             android:inputType="phone"
         />
@@ -54,6 +57,8 @@
         android:layout_marginStart="50dp"
         android:layout_marginEnd="50dp"
         android:layout_marginTop="20dp"
+        android:textColorHint="#FFFFFF"
+        app:boxStrokeColor="#FFFFFF"
         app:errorEnabled="false"
         app:errorTextColor="@color/colorRed"
         app:layout_constraintTop_toBottomOf="@id/view_phone"
@@ -68,7 +73,8 @@
             android:drawableLeft="@drawable/ic_vpn_key_black_24dp"
             android:textAlignment="center"
             android:hint="Mật Khẩu"
-            android:inputType="textPassword"/>
+            android:inputType="textPassword"
+            />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
