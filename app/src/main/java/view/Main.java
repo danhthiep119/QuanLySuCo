@@ -7,8 +7,10 @@ import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Base64;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -49,9 +51,11 @@ public class Main extends AppCompatActivity implements NavigationView.OnNavigati
     Toolbar toolbar;
     String name, phone, image, key;
     MyCustomExitDialog myCustomExitDialog;
+    final String TAG="Main";
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.main_view);
         getDataFromIntent();
         readDataFromFireBase();

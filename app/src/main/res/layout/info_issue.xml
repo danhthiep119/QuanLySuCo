@@ -94,7 +94,9 @@
 
             <GridView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:id="@+id/gvImage"
+                android:numColumns="3">
 
             </GridView>
         </TableLayout>

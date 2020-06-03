@@ -2,6 +2,7 @@ package viewmodel;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.quanlysucotruncu.R;
 
+import java.io.Serializable;
 import java.util.List;
 
 import model.Issue;
@@ -57,10 +59,12 @@ public class IssueAdapter extends RecyclerView.Adapter<IssueAdapter.DataViewHold
                 String VIEW_ADDRESS= issue.get(position).getAddress();
                 int VIEW_STATUS= issue.get(position).getStatus();
                 Intent intent = new Intent(context, InfoIssue.class);
+                Bundle bundle = new Bundle();
                 intent.putExtra("TITLE",VIEW_TITLE);
                 intent.putExtra("DESCRIPTION",VIEW_DESCRIPTION);
                 intent.putExtra("ADDRESS",VIEW_ADDRESS);
                 intent.putExtra("STATUS",VIEW_STATUS);
+                intent.putExtras(bundle);
                 context.startActivity(intent);
             }
         });

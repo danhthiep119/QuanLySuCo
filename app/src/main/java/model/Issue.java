@@ -1,22 +1,28 @@
 package model;
 
+import android.media.TimedMetaData;
+
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Issue implements Serializable {
     private  int status;
     private  String title;
     private  String address;
     private  String description;
+    private ArrayList<String> image;
     private  String date;
     private  String time;
     public Issue() {
     }
 
-    public Issue(int status, String title, String address, String description,String date,String time) {
+    public Issue(int status, String title, String address, String description, String date, String time, ArrayList<String> image) {
         this.status = status;
         this.title = title;
         this.address = address;
         this.description = description;
+        this.image = image;
         this.date = date;
         this.time = time;
     }
@@ -68,4 +74,13 @@ public class Issue implements Serializable {
     public void setTime(String time) {
         this.time = time;
     }
+
+    public ArrayList<String> getImage() {
+        return image;
+    }
+
+    public void setImage(ArrayList<String> image) {
+        this.image = image;
+    }
 }
+
