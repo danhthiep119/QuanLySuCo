@@ -19,17 +19,30 @@ import com.example.quanlysucotruncu.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListImageAdapter extends ArrayAdapter<Bitmap> {
+public class ListImageAdapter extends BaseAdapter {
     List<Bitmap> bitmap;
     Context mContext;
     int resource;
 
 
-    public ListImageAdapter(@NonNull Context context, int resource, @NonNull List<Bitmap> objects) {
-        super(context, resource, objects);
+    public ListImageAdapter(Context context,  List<Bitmap> objects) {
         this.mContext=context;
-        this.resource=resource;
         this.bitmap=objects;
+    }
+
+    @Override
+    public int getCount() {
+        return bitmap==null?0:bitmap.size();
+    }
+
+    @Override
+    public Object getItem(int position) {
+        return null;
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return 0;
     }
 
     @NonNull

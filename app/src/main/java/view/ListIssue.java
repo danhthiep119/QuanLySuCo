@@ -18,7 +18,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import model.Issue;
 import model.OnLoadMoreListener;
@@ -26,7 +28,8 @@ import model.User;
 import viewmodel.IssueAdapter;
 
 public class ListIssue extends AppCompatActivity {
-    ArrayList<Issue> listIssue=new ArrayList<>();
+    Map<String,Issue> keyIssue = new HashMap<>();
+    List<Issue> listIssue=new ArrayList<>();
     RecyclerView recyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,14 +45,16 @@ public class ListIssue extends AppCompatActivity {
         issues.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot key:dataSnapshot.getChildren()){
-                    Issue issue = key.getValue(Issue.class);
-                    listIssue.add(issue);
+                for (DataSnapshot data:dataSnapshot.getChildren()){
+                    String key = data.getKey();
+                    Issue issue = data.getValue(Issue.class);
+//                    listIssue.add(issue);
+//                    keyIssue.put(key,listIssue);
                 }
-                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(ListIssue.this,LinearLayoutManager.VERTICAL,false);
-                recyclerView.setLayoutManager(linearLayoutManager);
-                recyclerView.setHasFixedSize(true);
-                recyclerView.setAdapter(new IssueAdapter(listIssue,ListIssue.this));
+//                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(ListIssue.this,LinearLayoutManager.VERTICAL,false);
+//                recyclerView.setLayoutManager(linearLayoutManager);
+//                recyclerView.setHasFixedSize(true);
+//                recyclerView.setAdapter(new IssueAdapter(keyIssue,ListIssue.this));
             }
 
             @Override

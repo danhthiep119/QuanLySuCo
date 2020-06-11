@@ -35,7 +35,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import model.Issue;
 import viewmodel.IssueAdapter;
@@ -46,6 +48,7 @@ public class Main extends AppCompatActivity implements NavigationView.OnNavigati
     ImageView imgProfileUser;
     RecyclerView recyclerView;
     List<Issue> issueList=new ArrayList<>();
+    Map<List<String>,List<Issue>> keyIssue = new HashMap<>();
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
@@ -118,14 +121,17 @@ public class Main extends AppCompatActivity implements NavigationView.OnNavigati
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 issueList.clear();
+                List<String> keyNode=new ArrayList<>();
                 for (DataSnapshot key:dataSnapshot.getChildren()){
+                    keyNode.add(key.getKey());
                     Issue issue = key.getValue(Issue.class);
                     issueList.add(issue);
+                    keyIssue.put(keyNode,issueList);
                 }
                 LinearLayoutManager linearLayoutManager = new LinearLayoutManager(Main.this,LinearLayoutManager.VERTICAL,false);
                 recyclerView.setLayoutManager(linearLayoutManager);
                 recyclerView.setHasFixedSize(true);
-                recyclerView.setAdapter(new IssueAdapter(issueList, Main.this));
+                recyclerView.setAdapter(new IssueAdapter(keyIssue, Main.this));
             }
 
             @Override
