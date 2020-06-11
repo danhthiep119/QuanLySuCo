@@ -115,12 +115,12 @@ public class Main extends AppCompatActivity implements NavigationView.OnNavigati
     }
 
     private void readDataFromFireBase() {
-
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference issues = database.getReference("users/issues");
         issues.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                keyIssue.clear();
                 issueList.clear();
                 List<String> keyNode=new ArrayList<>();
                 for (DataSnapshot key:dataSnapshot.getChildren()){
