@@ -4,7 +4,7 @@
  - Tập thiết kế qua material.io
  - Tìm hiểu mô hình thiết kể MVVM
  - Sử dụng firebase realtime database để lưu trữ dữ liệu
- 
+ - Restful api sử dụng Volley
  + Hình splash screen:
  
  ![SplashScreen](https://user-images.githubusercontent.com/46775686/83610487-b2709480-a5a9-11ea-9a57-d5c78deb5ac8.PNG)
