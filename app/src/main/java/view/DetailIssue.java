@@ -121,6 +121,8 @@ public class DetailIssue extends AppCompatActivity {
                     for(int i=0;i<base64Bitmap.size();i++){
                         issues.child(key).child("image").child(String.valueOf(i)).setValue(base64Bitmap.get(i));
                     }
+                    Intent intent = new Intent(DetailIssue.this,Main.class);
+                    startActivity(intent);
                     finish();
             }
         });

@@ -66,14 +66,17 @@ public class InfoIssue extends AppCompatActivity {
     void getDataImage(String key) {
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("users/issues/"+key+"/image");
-        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot data: dataSnapshot.getChildren()){
-                    imageList.add(data.toString());
+                    String image = (String) data.getValue();
+                    imageList.add(image);
                 }
-                Log.w(TAG,""+imageList.size());
-//                convertBase64ToBitmap(imageList);
+                System.out.println("image List has"+imageList.size());
+                if(!imageList.isEmpty()) {
+                    convertBase64ToBitmap(imageList);
+                }
             }
 
             @Override

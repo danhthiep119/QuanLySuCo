@@ -54,6 +54,7 @@ public class Main extends AppCompatActivity implements NavigationView.OnNavigati
     Toolbar toolbar;
     String name, phone, image, key;
     MyCustomExitDialog myCustomExitDialog;
+    IssueAdapter adapter;
     final String TAG="Main";
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -131,7 +132,9 @@ public class Main extends AppCompatActivity implements NavigationView.OnNavigati
                 LinearLayoutManager linearLayoutManager = new LinearLayoutManager(Main.this,LinearLayoutManager.VERTICAL,false);
                 recyclerView.setLayoutManager(linearLayoutManager);
                 recyclerView.setHasFixedSize(true);
-                recyclerView.setAdapter(new IssueAdapter(keyIssue, Main.this));
+                adapter=new IssueAdapter(keyIssue, Main.this);
+                recyclerView.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
             }
 
             @Override

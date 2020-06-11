@@ -48,7 +48,7 @@ public class ListImageAdapter extends BaseAdapter {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        View view= LayoutInflater.from(mContext).inflate(resource,parent,false);
+        View view= LayoutInflater.from(mContext).inflate(R.layout.list_image_camera,parent,false);
         ImageView imageIssue=view.findViewById(R.id.imgCamera);
         Button btnDel=view.findViewById(R.id.btnDel);
         btnDel.setVisibility(View.INVISIBLE);
